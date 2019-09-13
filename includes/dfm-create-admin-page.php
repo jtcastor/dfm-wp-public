@@ -7,17 +7,18 @@
 
 if ( !class_exists( 'DFM_Create_Admin_Page_Class' ) ) {
   class DFM_Create_Admin_Page_Class {
-    function __construct($adminPageName, $adminPageSlug, $adminPagePos, $adminPageTermId, $adminPageTermName, $adminPageMax) {
+    function __construct($adminPageName, $adminPageSlug, $adminPagePos, $adminPageTermId, $adminPageTermName, $adminPageIcon, $adminPageMax) {
       $this->adminPageName = $adminPageName;
       $this->adminPageSlug = $adminPageSlug;
       $this->adminPagePos = $adminPagePos;
       $this->adminPageTermId = $adminPageTermId;
       $this->adminPageTermName = $adminPageTermName;
+      $this->adminPageIcon = $adminPageIcon;
       $this->adminPageMax = $adminPageMax;
       add_action('admin_menu', array( $this, 'dfm_add_admin_menu' ));
     }
     function dfm_add_admin_menu() {
-      add_menu_page($this->adminPageName, $this->adminPageName, 'manage_options', $this->adminPageSlug, array( $this, 'wpl_owt_list_table_fn'), '', $this->adminPagePos);
+      add_menu_page($this->adminPageName, $this->adminPageName, 'manage_options', $this->adminPageSlug, array( $this, 'wpl_owt_list_table_fn'), $this->adminPageIcon, $this->adminPagePos);
     }
     /**
     *  Load WP_LIST_TABLE page template
@@ -53,11 +54,11 @@ if ( !class_exists( 'DFM_Create_Admin_Page_Class' ) ) {
       /**
       *  Create new DFM_Create_Admin_Page_Class() and pass Page Title, Page Slug, Menu Position, term_id, Category Name, and Max Posts to Display.
       */
-      $dfm_table1 = new DFM_Create_Admin_Page_Class('Sports Content', 'sports-content', 54, $sportsCatId['term_id'], 'Sports', 25);
-      $dfm_table2 = new DFM_Create_Admin_Page_Class('Animals Content', 'animals-content', 55, $animalsCatId['term_id'], 'Animals', 10);
-      $dfm_table3 = new DFM_Create_Admin_Page_Class('Business Content', 'business-content', 56, $businessCatId['term_id'], 'Business', 12);
-      $dfm_table4 = new DFM_Create_Admin_Page_Class('Entertainment Content', 'entertainment-content', 57, $entertainmentCatId['term_id'], 'Entertainment', 50);
-      $dfm_table5 = new DFM_Create_Admin_Page_Class('World and News Content', 'world-and-news-content', 58, $worldAndNewsCatId['term_id'], 'World and News', 100);
+      $dfm_table1 = new DFM_Create_Admin_Page_Class('Sports Content', 'sports-content', 54, $sportsCatId['term_id'], 'Sports', 'dashicons-groups', 25);
+      $dfm_table2 = new DFM_Create_Admin_Page_Class('Animals Content', 'animals-content', 55, $animalsCatId['term_id'], 'Animals', 'dashicons-buddicons-activity', 10);
+      $dfm_table3 = new DFM_Create_Admin_Page_Class('Business Content', 'business-content', 56, $businessCatId['term_id'], 'Business', 'dashicons-building', 12);
+      $dfm_table4 = new DFM_Create_Admin_Page_Class('Entertainment Content', 'entertainment-content', 57, $entertainmentCatId['term_id'], 'Entertainment', 'dashicons-admin-media', 50);
+      $dfm_table5 = new DFM_Create_Admin_Page_Class('World and News Content', 'world-and-news-content', 58, $worldAndNewsCatId['term_id'], 'World and News', 'dashicons-admin-site', 100);
     }
   }
   dfm_create_admin_page();

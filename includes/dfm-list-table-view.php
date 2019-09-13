@@ -2,6 +2,7 @@
 /**
  * Register the DFM_List_Table_Class wich extends WP_List_Table.
  * This is a custom view for displaying the posts in a default WP_LIST_TABLE.
+ * Side Note: I would like to expand on this view to have more functionlity like, clickable titles, sort abillity, search box, bulk actions, and filters.
  *
  * @since 1.0.0
  */
