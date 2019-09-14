@@ -51,6 +51,7 @@ if ( !class_exists( 'DFM_List_Table_Class' ) ) {
         'post_status' => 'publish',
         'category' => $postTermID,
         'numberposts' => $postCatLimit,
+        'order' => 'ASC'
       ));
       $post_array = array();
       if ( count($all_posts) > 0 ) {
