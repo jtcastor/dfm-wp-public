@@ -33,7 +33,7 @@ if ( !class_exists( 'DFM_List_Table_Class' ) ) {
       $total_items = count($datas);
       $this->set_pagination_args(array(
         'total_items' => $total_items,
-        'per_page' => $per_page
+        'per_page'    => $per_page,
       ));
       $this->items = array_slice($datas, (($current_page -1) * $per_page), $per_page);
       $columns = $this->get_columns();
@@ -47,18 +47,18 @@ if ( !class_exists( 'DFM_List_Table_Class' ) ) {
       *  ALERT: I would like to circle back to this and pull the get_posts into a seperate/reusuable object.
       */
       $all_posts = get_posts(array(
-        'post_type' => 'post',
+        'post_type'   => 'post',
         'post_status' => 'publish',
-        'category' => $postTermID,
+        'category'    => $postTermID,
         'numberposts' => $postCatLimit,
-        'order' => 'ASC'
+        'order'       => 'ASC',
       ));
       $post_array = array();
       if ( count($all_posts) > 0 ) {
         foreach ($all_posts as $index => $post) {
           $post_array[] = array(
             'title' => $post->post_title,
-            'date' => $post->post_modified
+            'date'  => $post->post_modified,
           );
         }
       }
@@ -73,7 +73,7 @@ if ( !class_exists( 'DFM_List_Table_Class' ) ) {
     public function get_columns() {
       $columns = array(
         'title' => 'Title',
-        'date' => 'Date'
+        'date'  => 'Date',
       );
       return $columns;
     }
